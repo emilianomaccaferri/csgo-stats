@@ -1,0 +1,113 @@
+{% extends "layouts/page.twig" %}
+{% block head %}
+  {{parent()}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <style>
+    body{
+      background: #212121;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <h1 class="title"> {{basic_stats.steamID[0]}} </h1>
+  <div class="image-holder">
+    <img src="{{basic_stats.avatarFull[0]}}">
+  </div>
+  <div class="box">
+    <div style="width: 80%; margin: 0 auto 80px auto;">
+      <div id="kd"> K/D {{kd}} </div>
+      <div class="kd">
+        <div class="k" style="width: {{k}}%"></div>
+        <div class="d" style="width: {{d}}%"></div>
+      </div>
+      <div style="float: left" id="kills"> {{stats.playerstats.stats[0].value}} kills </div>
+      <div style="float: right" id="deaths"> {{stats.playerstats.stats[1].value}} deaths </div>
+    </div>
+    <div id="general_info" class="section">
+      <h1> General info <i style="float: right" class="fas fa-chevron-down slidedown general"></i></h1>
+      <div class="flex-table" id="general">
+        <div class="row">
+          <div class="item">
+            <span>
+              <i class="fas fa-stopwatch"></i> {{hours}}h of <u>actual</u>  playtime
+            </span>
+          </div>
+          <div class="item">
+            <span>
+               {{stats.playerstats.stats[3].value}} bombs planted <i class="fas fa-bomb"></i>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="item">
+            <span>
+              <i class="fas fa-check"></i> {{stats.playerstats.stats[4].value}} total defused bombs
+            </span>
+          </div>
+          <div class="item">
+            <span>
+              {{stats.playerstats.stats[5].value}} wins <i class="fas fa-award"></i>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="item">
+            <span>
+              <i class="fas fa-first-aid"></i> {{stats.playerstats.stats[5].value}}HP of damage done
+            </span>
+          </div>
+          <div class="item">
+            <span>
+              {{stats.playerstats.stats[6].value}}$ earned <i class="fas fa-dollar-sign"></i>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="item">
+            <span class="last">
+              <i class="far fa-life-ring"></i> {{stats.playerstats.stats[8].value}} rescued hostages
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="weapons_info" class="section">
+      <h1> Weapons kills <i style="float: right" class="fas fa-chevron-down slidedown weapons"></i></h1>
+      <div class="flex-table" id="weapons">
+      {% for weapon in weapons %}
+        <div class="row">
+          <div class="item">
+            <span style="display: flex; align-items: center;">
+              {{weapon[0].value}} <img src="{{weapon[0].icon}}" style="filter: invert(100%);"> {{weapon[0].item_name}}
+            </span>
+          </div>
+          <div class="item">
+            <span style="display: flex; align-items: center;">
+              {{weapon[1].item_name}} <img src="{{weapon[1].icon}}" style="filter: invert(100%);"> {{weapon[1].value}}
+            </span>
+          </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+  <script>
+
+    $(".slidedown").on('click', e => {
+
+      var id = e.currentTarget.className.split(" ")[3];
+
+      if($(e.currentTarget).hasClass('enabled')){
+        TweenLite.to(`#${id}`, .5, {opacity: 0, transform: 'translateY(-80px)', 'pointer-events': 'none', 'position': 'relative', 'z-index': '-1', height: 0});
+        TweenLite.to($(e.currentTarget), .5, {transform: 'rotateX(180deg)'})
+        $(e.currentTarget).removeClass('enabled');
+      }else{
+        TweenLite.to(`#${id}`, .5, {opacity: 1, transform: 'translateY(0)', 'pointer-events': 'all', 'position': 'relative', 'z-index': '150', height: "auto"});
+        $(e.currentTarget).addClass('enabled')
+        TweenLite.to($(e.currentTarget), .5, {transform: 'rotateX(0)'})
+      }
+
+    })
+
+  </script>
+{% endblock %}

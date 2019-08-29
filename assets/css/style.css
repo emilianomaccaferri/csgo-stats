@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap');
+
+body{
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: url(/static/img/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.container{
+  width: 100%;
+}
+.container.flex{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container.white{
+  color: #fff !important;
+}
+#content{
+  width: 100%;
+}
+.container .title{
+  text-align: center;
+  color: white;
+  font-weight: lighter;
+  font-size: 3.5em;
+}
+.container .subtitle{
+  font-size: 1.2em;
+  font-weight: lighter;
+  color: white;
+  text-align: center;
+  margin: 20px auto 0 auto;
+}
+.container .image-holder{
+  margin: 0 auto;
+  text-align: center;
+}
+.container .image-holder img{
+  border-radius: 256px;
+  border: 3px solid #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.container .box{
+  width: 100%;
+  max-width: 1024px;
+  margin: 40px auto 0 auto;
+}
+.container .box .kd{
+  width: 100%;
+  height: 5px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.container .box .kd .k{
+  background: #3498db;
+  height: 100%;
+}
+#kd{
+  text-align: center;
+  margin: 0 auto 20px auto;
+  font-weight: lighter;
+  font-size: 2.5em;
+}
+#kills, #deaths{
+  margin-top: 15px;
+  font-size: 1.3em;
+  font-weight: lighter;
+}
+.container .box .kd .d{
+  background: #e74c3c;
+  height: 100%;
+}
+.container .section{
+  width: 80%;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+.container .section h1{
+  font-weight: 300;
+}
+.container .section .flex-table{
+  margin: 0 auto;
+  width: 100%;
+}
+.container .section .flex-table .row{
+  width: 100%;
+  border-bottom: 5px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.container .section .flex-table .item{
+  width: 45%;
+  padding: 20px;
+}
+.container .section .flex-table .item span{
+  display: block;
+}
+.container .section .flex-table .item span img{
+  transform: scale(0.6);
+}
+.container .section .flex-table .item span span.inner{
+  display: inline-block;
+  margin: 10px;
+  word-spacing: normal;
+}
+.container .section .flex-table .item i, .container .section .flex-table .item i{
+  margin: 10px;
+  font-size: 1.4em;
+}
+.container .section .flex-table .item:nth-child(even){
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+.container .section .flex-table .item span.last{
+  text-align: center;
+}
+.container .section .flex-box{
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.container .section .flex-box .box{
+  width: 40%;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.container .section .flex-box .box img{
+  filter: invert(100%);
+}
+.container .section .flex-box .box:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#profilebox{
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#profilebox input{
+  background: none;
+  border: none;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  width: 85%;
+  font-size: 1em;
+  max-width: 1024px;
+  height: 50px;
+  background: rgba(255,255,255,0.1);
+  text-indent: 20px;
+  outline: none;
+}
+#profilebox button{
+  height: 54px;
+  border: none;
+  width: 150px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #fff;
+  background: #2ecc71;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  transition: .25s all ease;
+}
+#profilebox button:hover{
+  background: #27ae60;
+}
+.enabled{
+  opacity: 1;
+  height: auto;
+}
+
+@media screen and (max-width: 1000px){
+  #profilebox button{
+    margin-top: 20px;
+  }
+  .container .section .flex-table .item{
+    width: 80%;
+    text-align: left;
+    border-bottom: 5px solid rgba(255,255,255,0.05);
+  }
+  .container .section .flex-table .row{
+    border-bottom: none;
+  }
+  .container .section .flex-table .item:nth-child(even) span{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    flex-direction: row-reverse !important;
+  }
+  .container .section .flex-table .item span.last{
+    text-align: left;
+  }
+}

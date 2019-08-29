@@ -1,0 +1,56 @@
+{% extends "layouts/page.twig" %}
+
+{% block content %}
+  <h1 class="title"> CSGO Stats </h1>
+  <h2 class="subtitle"> by Macca </h2>
+  <div id="app">
+    <form @submit.prevent="search" id="profilebox">
+      <input type="text" id="p" placeholder="SteamID/Profile URL" v-model="profile">
+      <button id="b">Search</button>
+    </form>
+  </div>
+  <script>
+
+    const app = new Vue({
+
+      el: '#app',
+      data: {
+        profile: ''
+      },
+      methods: {
+
+        search: function(){
+
+          if(this.profile.trim() == "")
+            return document.getElementById('p').focus()
+
+          document.getElementById('b').innerHTML = '<i class="fas fa-circle-notch rotating"></i>'
+          document.getElementById('b').disabled = true;
+
+          axios.post('/api/stats/convert', {
+
+            stuff: document.getElementById('p').value
+
+          })
+
+          .then(success => {
+
+            window.location = success.data.url;
+
+          })
+          .catch(err => {
+
+            document.getElementById('b').innerHTML = 'Search'
+            document.getElementById('b').disabled = false;
+
+          })
+
+        }
+
+      },
+      delimiters: ['[[', ']]']
+
+    })
+
+  </script>
+{% endblock %}
